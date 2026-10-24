@@ -1,5 +1,5 @@
 # Timeline Publisher
-[🚀 Launch Timeline Publisher](https://dougalder.github.io/timeline-publisher.html)
+
 Create beautiful, interactive storytelling timelines and animated slideshows from your own data. Transform spreadsheet rows into stunning visual narratives with 3D visualization, video export, and web publishing—all on your Mac.
 
 ![Timeline Publisher](docs/screenshots/app-interface.png)
