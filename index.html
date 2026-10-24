@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Publisher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            color: #667eea;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .links {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .links h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .link-item {
+            padding: 20px;
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            background: #f0f2ff;
+            transform: translateX(5px);
+        }
+
+        .link-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .link-item a::after {
+            content: '→';
+        }
+
+        .link-item p {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>📊 Timeline Publisher</h1>
+            <p>Create beautiful, interactive storytelling timelines and animated slideshows from your own data.</p>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="Timeline Publisher.html" class="btn btn-primary">🚀 Launch App</a>
+            <a href="docs/MANUAL.md" class="btn btn-secondary">📖 Read Manual</a>
+            <a href="docs/CSV-FORMAT.md" class="btn btn-secondary">📋 Data Guide</a>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <h3>Interactive Timelines</h3>
+                <p>Import data from CSV, visualize events on an interactive timeline with pan and zoom controls. Organize events into color-coded tracks.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎬</div>
+                <h3>Animated Slideshows</h3>
+                <p>Create "stops" to guide viewers through your story. Configure timing and transitions. Present in full-screen mode with keyboard controls.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <h3>3D Visualization</h3>
+                <p>Toggle 3D view with adjustable camera controls: tilt, turn, zoom, focus, and depth. WebGL rendering with canvas fallback.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🌙</div>
+                <h3>Vignette Effect</h3>
+                <p>Add professional edge darkening to presentations and exports. Customize intensity, coverage, softness, shape, and color.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">💾</div>
+                <h3>Export & Publish</h3>
+                <p>Export as PNG images, MP4 videos, CSV data, or standalone HTML pages for web sharing. All processing happens locally—no server required.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🖥️</div>
+                <h3>Desktop App</h3>
+                <p>Native macOS app with menu bar, keyboard shortcuts, file dialogs, and Dock integration. Also works as a web app in any browser.</p>
+            </div>
+        </div>
+
+        <div class="links">
+            <h2>Documentation & Resources</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="docs/MANUAL.md">User Manual</a>
+                    <p>Complete guide to all features with detailed walkthroughs and examples</p>
+                </div>
+
+                <div class="link-item">
+                    <a href="docs/INSTALL.md">Installation</a>
+                    <p>Setup instructions for macOS app, web version, and building from source</p>
+                </div>
+
+                <div class="link-item">
+                    <a href="docs/KEYBOARD-SHORTCUTS.md">Keyboard Shortcuts</a>
+                    <p>Complete reference of all keyboard commands and navigation shortcuts</p>
+                </div>
+
+                <div class="link-item">
+                    <a href="docs/CSV-FORMAT.md">Data Format Guide</a>
+                    <p>How to prepare spreadsheet data for import with examples and templates</p>
+                </div>
+
+                <div class="link-item">
+                    <a href="docs/FAQ.md">FAQ</a>
+                    <p>Answers to 50+ frequently asked questions organized by topic</p>
+                </div>
+
+                <div class="link-item">
+                    <a href="CONTRIBUTING.md">Contributing</a>
+                    <p>Guidelines for contributing code, reporting bugs, and suggesting features</p>
+                </div>
+
+                <div class="link-item">
+                    <a href="README.md">Project Overview</a>
+                    <p>Features, requirements, architecture, and community information</p>
+                </div>
+
+                <div class="link-item">
+                    <a href="CHANGELOG.md">Changelog</a>
+                    <p>Version history, feature releases, and roadmap for future versions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Timeline Publisher — Create storytelling timelines from your data. <a href="LICENSE">MIT Licensed</a> &bull; <a href="https://github.com/dougalder/timeline-publisher">GitHub</a></p>
+        <p style="margin-top: 10px; font-size: 0.8em;">Everything stays on your computer. No internet required. No data sent anywhere.</p>
+    </footer>
+</body>
+</html>
