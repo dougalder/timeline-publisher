@@ -2,6 +2,8 @@
 
 Complete documentation for Timeline Publisher users and developers.
 
+##[Explainer Video](2026-11-06 Timeline Publisher-Walkthrough-1920x1080.mp4)
+
 ## For Users
 
 Start here based on what you need:
